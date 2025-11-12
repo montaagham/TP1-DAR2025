@@ -1,0 +1,34 @@
+// Fichier IDL pour definir l'interface du service bancaire
+module corbaBanque {
+
+    // Structure d'un compte
+    struct Compte {
+        long code;
+        float solde;
+    };
+
+    // Type pour un tableau de comptes
+    typedef sequence<Compte> tabComptes;
+
+    // Interface du service bancaire
+    interface IBanqueRemote {
+
+        // creer un nouveau compte
+        void creerCompte(in Compte cpte);
+
+        // deposer de l'argent
+        void verser(in float mt, in long code);
+
+        // retirer de l'argent
+        void retirer(in float mt, in long code);
+
+        // recuperer un compte par son code
+        Compte getCompte(in long code);
+
+        // recuperer tous les comptes
+        tabComptes getComptes();
+
+        // convertir euro vers dinar
+        double conversion(in float mt);
+    };
+};
